@@ -54,6 +54,12 @@ With the SQS Fifo, it **is impossible to fetch** another message from the queue 
 
   - You can learn more about this behavior [in this article](https://medium.com/lego-engineering/amazon-eventbridge-archive-replay-an-experience-report-6aabc744df5a).
 
+- You **cannot control the rate the archive sends the events to the given target**.
+
+  - One **solution** would be to use **an intermediatory SQS queue**.
+
+    - [This article](https://medium.com/lego-engineering/amazon-eventbridge-archive-replay-events-in-tandem-with-a-circuit-breaker-c049a4c6857f) describes how to do that.
+
 - I could not find a way to dynamically inject the time the replay started into the replayed event using CDK.
 
   - There is the `aws.events.event.ingestion-time` predefined variable, but that one would be different for each event, which is NOT what I want.
