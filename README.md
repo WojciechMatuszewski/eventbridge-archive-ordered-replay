@@ -52,6 +52,8 @@ With the SQS Fifo, it **is impossible to fetch** another message from the queue 
 
 - Just like the delivery of the EventBridge events, the **EventBridge Archive takes some time to ingest the events**. You will most likely need to wait a bit for the events to show up in the archive before you can replay them!
 
+  - You can learn more about this behavior [in this article](https://medium.com/lego-engineering/amazon-eventbridge-archive-replay-an-experience-report-6aabc744df5a).
+
 - I could not find a way to dynamically inject the time the replay started into the replayed event using CDK.
 
   - There is the `aws.events.event.ingestion-time` predefined variable, but that one would be different for each event, which is NOT what I want.
