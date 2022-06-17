@@ -4,6 +4,10 @@ Understand the EventBridge archive replay and its implications on the order of r
 
 This repository and the exploration of the EventBridge archive are inspired by the [eventbridge-cli](https://github.com/spezam/eventbridge-cli) and its "keep the order of events while replaying them" feature.
 
+**I've created this repository before I've realized that the Step Function cannot publish back to the EventBridge – the EventBridge does not have ordering guarantees!**. Instead, one should publish the event directly to the destination or look into DynamoDB streams or Kinesis Data Streams.
+
+**Consider reading [this article](https://dev.to/aws-builders/amazon-eventbridge-archive-and-ordered-replay-of-events-2lmg) to learn more**.
+
 ## The problem
 
 Replaying events from the EventBridge archive does not respect the original order of the events ([Source](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-replay-archived-event.html)). It would be neat to be able to replay the events in the same order they were published.
